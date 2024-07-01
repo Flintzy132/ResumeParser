@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Resume Analyzer</title>
+    <link rel="stylesheet" href="/static/style/style.css">
+</head>
+<body>
+    <br>
+    <form action="/upload" method="post" enctype="multipart/form-data" id="resumeForm">
+        <div id="resumeUpload">
+            <label for="file">Choose a Resume file:</label><br>
+            <input type="file" id="file" name="resumes[]" required style="margin-bottom: 0">
+        </div>
+        <button id="add" type="button" onclick="addResume()" style="margin-top: 5px">Add Resume</button>
+        <div id="jd"></div> <br>
+        <button id="done" type="button" onclick="addJD()">Done</button>
+    </form>
+
+    <script>
+        let resumeCount = 1;
+
+        function addResume() {
+            let div = document.getElementById('resumeUpload');
+            let newInput = document.createElement('input');
+            newInput.type = 'file';
+            newInput.name = 'resumes[]';
+            newInput.required = true;
+            newInput.style.display = 'block';
+            newInput.style.marginTop = '20px';
+            resumeCount++;
+            div.appendChild(newInput);
+        }
+
+        function addJD() {
+            let btn = document.getElementById('add');
+            btn.style.display = 'none';
+            let btn3 = document.getElementById('done');
+            btn3.style.display = 'none';
+
+            let div1 = document.getElementById('jd');
+            let text = document.createElement('label');
+            let newInput = document.createElement('input');
+            let btn2 = document.createElement('button');
+
+            btn2.type = 'submit';
+            btn2.textContent = 'Upload';
+            text.textContent = 'Choose a JD File:';
+            newInput.type = 'file';
+            newInput.id = 'file1';
+            newInput.name = 'job_description';
+            newInput.required = true;
+            newInput.style.display = 'block';
+            newInput.style.marginTop = '5px';
+
+            div1.appendChild(text);
+            div1.appendChild(newInput);
+            div1.appendChild(btn2);
+        }
+    </script>
+</body>
+</html>
